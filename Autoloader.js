@@ -26,18 +26,13 @@
  * http://creativecommons.org/licenses/by/2.5/
 */
  
-(function(){
- 
-  //object constructor
-  function runinsert(){
+//object constructor
+function runinsert(){
 
-    // run the Herosaver Script
-    var xhr=new XMLHttpRequest;xhr.open("get","https://raw.githubusercontent.com/TeaWithLucas/Herosaver/master/herosaver.js",true);xhr.onreadystatechange=function(){if(xhr.readyState==4){var script=document.createElement("script");script.type="text/javascript";script.text=xhr.responseText;document.body.appendChild(script)}};xhr.send(null);
+  // run the Herosaver Script
+  var xhr=new XMLHttpRequest;xhr.open("get","https://raw.githubusercontent.com/TeaWithLucas/Herosaver/master/herosaver.js",true);xhr.onreadystatechange=function(){if(xhr.readyState==4){var script=document.createElement("script");script.type="text/javascript";script.text=xhr.responseText;document.body.appendChild(script)}};xhr.send(null);
 
-  };
-  	
-  //instantiate and run 
-  var runinsert = new runinsert();
- 
- 
-})();
+};
+
+//instantiate and run 
+runinsert();

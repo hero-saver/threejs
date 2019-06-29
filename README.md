@@ -1,6 +1,7 @@
 # Herosaver
 
-Methodology to Save Configuration and STLs from websites like heroforge.com for academic and educational purposes
+Methodology to Save Configuration and STLs from websites like heroforge.com for academic and educational purposes.
+Please always think about the developers of such websites and try to support them when financially possible for you, as without them, there would be no such tools.
 
 ## Usage
 ### Browser Console

@@ -4,7 +4,7 @@
 // @namespace       https://github.com/TeaWithLucas/Herosaver/
 // @description     Autoloader for the Herosaver Script
 // @version	        1
-// @include         *example.org/*
+// @include         *example.com/*
 // @installURL      https://raw.githubusercontent.com/TeaWithLucas/Herosaver/master/Autoloader.js
 // @downloadURL     https://raw.githubusercontent.com/TeaWithLucas/Herosaver/master/Autoloader.js
 // @updateURL       https://raw.githubusercontent.com/TeaWithLucas/Herosaver/master/Autoloader.js
@@ -28,19 +28,16 @@
  
 (function(){
  
-    //object constructor
-    function example(){
- 
-        // run the Herosaver Script
-        var xhr=new XMLHttpRequest;xhr.open("get","https://raw.githubusercontent.com/TeaWithLucas/Herosaver/master/herosaver.js",true);xhr.onreadystatechange=function(){if(xhr.readyState==4){var script=document.createElement("script");script.type="text/javascript";script.text=xhr.responseText;document.body.appendChild(script)}};xhr.send(null);
- 
-    };
+  //object constructor
+  function runinsert(){
+
+    // run the Herosaver Script
+    var xhr=new XMLHttpRequest;xhr.open("get","https://raw.githubusercontent.com/TeaWithLucas/Herosaver/master/herosaver.js",true);xhr.onreadystatechange=function(){if(xhr.readyState==4){var script=document.createElement("script");script.type="text/javascript";script.text=xhr.responseText;document.body.appendChild(script)}};xhr.send(null);
+
+  };
   	
-  	//Wait for page load 
-  	window.addEventListener('load', function() {
-      //instantiate and run 
-      var example = new example();
-    }, false);
+  //instantiate and run 
+  var runinsert = new runinsert();
  
  
 })();

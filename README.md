@@ -1,7 +1,8 @@
 # Herosaver
 
-Methodology to Save Configuration and STLs from websites like heroforge.com for academic and educational purposes.
-Please always think about the developers of such websites and try to support them when financially possible for you, as without them, there would be no such tools.
+Methodology to Save Configuration and STLs from websites using the THREE.JS framework for academic and educational purposes.
+
+Please **Always** think about the **developers** of such websites and try to **support them whenever possible**, as without them, there would be no such tools.
 
 ## Usage
 ### Browser Console

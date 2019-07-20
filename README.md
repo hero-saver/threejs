@@ -17,7 +17,7 @@ var xhr=new XMLHttpRequest;xhr.open("get","https://raw.githubusercontent.com/Tea
 ### Loading via Greecemonkey or other script loader
 This method should automatically load the script on page load. Current it doesn't work if the page is reloaded (Open for suggestions?)
 
-1. Install Greecemonkey Browser Addon (or alternative)
+1. Install Greasemonkey Browser Addon (or alternative)
 2. Click the icon and select 'New User Script' from the dropdown menu
 3. Copy and pase from [Autoloader.js](Autoloader.js), editing the intended website
 4. Save

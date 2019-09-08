@@ -9,7 +9,7 @@ function init() {
 
     RK.STLExporter.prototype = {
 
-        constructor: THREE.STLExporter,
+        constructor: RK.STLExporter,
 
         parse: ( function () {
 
@@ -17,11 +17,17 @@ function init() {
             var normalMatrixWorld = new THREE.Matrix3();
 
             return function ( scenes ) {
+				
                 console.log(scenes);
+				
                 var output = '';
+				
                 output += 'solid exported\n';
+				
                 for(var scene_nr in scenes) {
+					
                     scenes[scene_nr].traverse( function ( object ) {
+						
                         if(object instanceof RK.Mesh){		    
                             // if object is hidden - exit
                             if(object.visible == false) return; 
@@ -32,15 +38,16 @@ function init() {
                             var mesh = object;
 
                             if(geometry instanceof RK.BufferGeometry){
-                                var oldgeometry = geometry.clone();
+								//Get pose from skeleton
+                                var bufferGeometry = geometry.clone();
                                 geometry = new RK.Geometry().fromBufferGeometry(geometry);
-                                var skinIndex = oldgeometry.getAttribute('skinIndex');
-                                var skinWeight = oldgeometry.getAttribute('skinWeight');
-                                var morphTarget = oldgeometry.getAttribute('morphTarget0');
+                                var skinIndex = bufferGeometry.getAttribute('skinIndex');
+                                var skinWeight = bufferGeometry.getAttribute('skinWeight');
+                                var morphTarget = bufferGeometry.getAttribute('morphTarget0');
                                 var mtcount = 0;
                                 while(typeof morphTarget !== 'undefined') {
                                     mtcount++;
-                                    morphTarget = oldgeometry.getAttribute('morphTarget' + mtcount);
+                                    morphTarget = bufferGeometry.getAttribute('morphTarget' + mtcount);
                                 }
                                 if(typeof skinIndex !== 'undefined') {
                                     geometry.skinIndices = [];
@@ -56,9 +63,9 @@ function init() {
                                         for(var j = 0; j < mtcount; j++) {
                                             geometry.morphTargets[j].vertices.push((
                                                 new THREE.Vector3(
-                                                    oldgeometry.getAttribute('morphTarget' + j).getX(i),
-                                                    oldgeometry.getAttribute('morphTarget' + j).getY(i),
-                                                    oldgeometry.getAttribute('morphTarget' + j).getZ(i)
+                                                    bufferGeometry.getAttribute('morphTarget' + j).getX(i),
+                                                    bufferGeometry.getAttribute('morphTarget' + j).getY(i),
+                                                    bufferGeometry.getAttribute('morphTarget' + j).getZ(i)
                                                 )
                                             ));
                                         }
@@ -139,7 +146,7 @@ function init() {
 
                                                 var finalVector = new THREE.Vector4();
 
-                                                if (mesh.geometry.morphTargets !== 'undefined') {
+                                                if (geometry.morphTargets !== 'undefined') {
 
                                                     var morphVector = new THREE.Vector4(vector.x, vector.y, vector.z);
 
@@ -151,7 +158,7 @@ function init() {
                                                 }
 
                                                 for (var k = 0; k < 4; k++) {
-                                                    if (geometry.morphTargets !== undefined) {
+                                                    if (geometry.morphTargets !== 'undefined') {
                                                         var tempVector = new THREE.Vector4(morphVector.x, morphVector.y, morphVector.z);
                                                     } else {
                                                         var tempVector = new THREE.Vector4(vector.x, vector.y, vector.z);
@@ -159,9 +166,8 @@ function init() {
                                                     
                                                     tempVector.multiplyScalar(weights[k]);
                                                     //the inverse takes the vector into local bone space
-                                                    tempVector.applyMatrix4(inverses[k])
-                                                    //which is then transformed to the appropriate world space
-                                                        .applyMatrix4(skinMatrices[k]);
+													//which is then transformed to the appropriate world space
+                                                    tempVector.applyMatrix4(inverses[k]).applyMatrix4(skinMatrices[k]);
                                                     finalVector.add(tempVector);
 
                                                 }
@@ -307,8 +313,8 @@ function inject_script(url, callback) {
   head.appendChild(script);
 }
 
-inject_script("//code.jquery.com/jquery-3.3.1.min.js", function () {
-    inject_script("//cdnjs.cloudflare.com/ajax/libs/three.js/100/three.js", function () { init() })
+inject_script("//code.jquery.com/jquery-3.3.1.js", function () {
+    inject_script("//cdnjs.cloudflare.com/ajax/libs/three.js/108/three.js", function () { init() })
 });
 
 function download_stl(object){

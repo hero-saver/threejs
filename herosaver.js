@@ -54,7 +54,13 @@ function init() {
                                         geometry.skinIndices.push((new THREE.Vector4 ()).fromBufferAttribute(skinIndex,i));
                                         geometry.skinWeights.push((new THREE.Vector4 ()).fromBufferAttribute(skinWeight,i));
                                         for(var j = 0; j < mtcount; j++) {
-                                            geometry.morphTargets[j].vertices.push((new THREE.Vector3 ()).fromBufferAttribute(oldgeometry.getAttribute('morphTarget' + j)));
+                                            geometry.morphTargets[j].vertices.push((
+                                                new THREE.Vector3(
+                                                    oldgeometry.getAttribute('morphTarget' + j).getX(i),
+                                                    oldgeometry.getAttribute('morphTarget' + j).getY(i),
+                                                    oldgeometry.getAttribute('morphTarget' + j).getZ(i)
+                                                )
+                                            ));
                                         }
                                     }
                                 }
@@ -145,8 +151,12 @@ function init() {
                                                 }
 
                                                 for (var k = 0; k < 4; k++) {
-
-                                                    var tempVector = new THREE.Vector4(vector.x, vector.y, vector.z);
+                                                    if (geometry.morphTargets !== undefined) {
+                                                        var tempVector = new THREE.Vector4(morphVector.x, morphVector.y, morphVector.z);
+                                                    } else {
+                                                        var tempVector = new THREE.Vector4(vector.x, vector.y, vector.z);
+                                                    }                                                    
+                                                    
                                                     tempVector.multiplyScalar(weights[k]);
                                                     //the inverse takes the vector into local bone space
                                                     tempVector.applyMatrix4(inverses[k])

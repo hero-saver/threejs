@@ -22,10 +22,16 @@ This method should automatically load the script on page load.
 3. The install window should pop up, check "Open editor after install completes" if you want to add domains, then click install.
 4. If it doesn't pop up an install window, either Greasemonkey isn't installed or another problem has occured, you can try adding the script manually.
 
-## Buttons
+## User Guide
+
+### Buttons
 * STL - Exports the current model and downloads a STL of it.
 * OBJ - Exports the current model and downloads a OBJ of it.
-* Subdivision Passes - Number of loop subdivision passes for the model.
+
+### Options
+* Quality - Number of loop subdivision passes for the model.
+
+### Dropdown Menu Items
 * Save - Exports the current model settings in a JSON format.
 * Load - Imports a previously exported JSON file with model settings.
 
@@ -43,6 +49,22 @@ For some guides look at:
 * [Reddit - Cheatsheet on Printing and Painting Miniatures](https://www.reddit.com/r/PrintedMinis/comments/8c0uvr/cheatsheet_on_printing_and_painting_miniatures/ "Cheatsheet on Printing and Painting Miniatures")
 * [Reddit - A detailed guide to printing your minis](https://www.reddit.com/r/PrintedMinis/comments/8c0uvr/cheatsheet_on_printing_and_painting_miniatures/ "A detailed guide to printing your minis")
 
+## Contributing
+
+### Installing minifyer
+1. [Install NPM](https://www.npmjs.com/get-npm)
+2. Clone the repository
+3. Navigate to the repository in your console
+4. Install rollup using:
+```
+npm install rollup
+```
+### Minifying
+1. Navigate to the repository in your console
+2. Build the minified version using:
+```
+npm run build
+```
 
 ## Bugs
 

@@ -119,34 +119,72 @@ function process(object3d, smooth, mirroredPose) {
     return group;
 };
 
-document.body.arrive(".footer", { onceOnly: true, existing: true }, function () {
-    jQuery('.headerMenu:last').remove();
-    jQuery('a:contains(Log In)').remove();
-    jQuery(".headerMenu-nav-item:contains(Save)").hide();
-    jQuery(".headerMenu-nav-item:contains(Share)").remove();
-    jQuery(".headerMenu-nav-item:contains(Heroes)").remove();
-    jQuery(".editorFooter").empty();
-    jQuery("li.tab-Material").remove();
+document.body.arrive(".footer", { onceOnly: true, existing: true }, function () { 	 
+	var icon_import = '\u{1F845}';
+	var icon_export = '\u{1F847}';
+	var icon_save = '\u{1F4BE}';
+	
+	var class_header = 'headerMenu-nav-item';
+	var class_nav = 'headerMenu-nav-scroll';
+	var class_char_menu = 'headerMenu-container';
+	var class_editor_footer = 'editorFooter';
+	var class_editor_tabs = 'tabs';
+	var class_shop_button = 'shop-button clickable';
+	
+	var html_import = '<label id="jsonImport" for="import" ><span class="' + class_header + '" href="#" target="_self"><input type="file" id="import" name="import" style="display: none;"/><div class="' + class_header + '-img"><span style="width:20px">'+icon_import+'</span></div><div class="' + class_header + '-text">Import</div></span></label>';
+	var html_export = '<a id="jsonExport" class="' + class_header + '" href="#" target="_self"><div class="' + class_header + '-img"><span style="width:20px">'+icon_export+'</span></div><div class="' + class_header + '-text">Export</div></a>';
+	
+	var style_editor_footer = { "margin-left": "10px", "width": "50px" };
+	var style_char_menu_item = { "margin-left": "10px", "width": "50px" };
+	var style_shop_button = {};
+	var style_number_label = {'margin-left': '20px;'};
+	var char_menu = { "display": "flex", "justify-content": "center", "align-content": "center", "align-items": "center" };
+	
+    //jQuery('.headerMenu:last').remove();
+    //jQuery('a:contains(Log In)').remove();
+    //jQuery(".headerMenu-nav-item:contains(Save)").hide();
+    //jQuery(".headerMenu-nav-item:contains(Share)").remove();
+    //jQuery(".headerMenu-nav-item:contains(Heroes)").remove();
+    //jQuery(".editorFooter").empty();
+    //jQuery("li.tab-Material").remove();
     jQuery(".footer").empty();
+	jQuery(".content-side > .headerMenu-container").remove();
+	jQuery("#subDSltLabel").remove();
+	jQuery("#subdivideSLT").remove();
+	jQuery("#topSaveStl").remove();
+	jQuery("#topSaveObj").remove();
+	jQuery("#butSaveStl").remove();
+	jQuery("#butSaveObj").remove();
+	jQuery("#jsonImport").remove();
+	jQuery("#jsonExport").remove();
 
-    var character_area = jQuery(".headerMenu-container").first();
-    character_area.css({ "display": "flex", "justify-content": "center", "align-content": "center", "align-items": "center" });
-
-    var style = { "margin-left": "10px", "width": "50px" };
-
-    character_area
-        .append(jQuery("<a />", { css: style, class: "jss7 jss9 jss10", text: "STL" }).on("click", save_stl))
-        .append(jQuery("<a />", { css: style, class: "jss7 jss9 jss10", text: "OBJ" }).on("click", save_obj))
-        .append(jQuery('<label />', { css: { "margin-left": "20px" }, for: 'subdivideSLT', text: 'Subdivision Passes' }))
-        .append(
-            jQuery('<select />', { css: { "margin-left": "5px" }, id: 'subdivideSLT' })
-                .append(new Option("0", 0))
-                .append(new Option("1", 1))
-                .append(new Option("2", 2))
-        );
-
-    jQuery(".headerMenu-nav-scroll:first").append([
-        jQuery('<a class="headerMenu-nav-item" href="#" target="_self"><div class="headerMenu-nav-item-img"><img src="/static/svg/character-menu/save.svg" width="20"></div><div class="headerMenu-nav-item-text">Save</div></a>').on("click", save_json),
-        jQuery('<label for="load"><span class="headerMenu-nav-item" href="#" target="_self"><input type="file" id="load" name="load" style="display: none;"/><div class="headerMenu-nav-item-img"><img src="/static/svg/character-menu/folder.svg" width="20"></div><div class="headerMenu-nav-item-text">Load</div></span></label>').on("change", load_json)
+    var area_char_menu = jQuery('.' + class_char_menu).first();
+    area_char_menu.css(char_menu);
+    area_char_menu
+		.append(jQuery("<label />", { css: style_char_menu_item, 	class: "jss7", 				id:'subDSltLabel', 	text: 'Quality:', 			title:'Subdivision Passes', for:'subdivideSLT'}))
+		.append(jQuery("<input />", { css: style_char_menu_item, 	class: "jss7 jss9 jss10",	id:'subdivideSLT', 	 name:'subdivideSLT',	 	title:'Subdivision Passes', type:'number', min:'0', max:'2', step:'1', value:'0' }))
+        .append(jQuery("<a />", 	{ css: style_char_menu_item, 	class: "jss7 jss9 jss10",	id:'topSaveStl',	text: icon_save + " .stl",	title:'Download in STL Format'}).on("click", save_stl))
+        .append(jQuery("<a />", 	{ css: style_char_menu_item,	class: "jss7 jss9 jss10",	id:'topSaveObj',	text: icon_save + " .obj",	title:'Download in OBJ Format'}).on("click", save_obj));
+	
+	var area_editor_footer = jQuery("." + class_editor_footer);
+	area_editor_footer
+		.prepend(jQuery("<a />", 	{ css: style_shop_button,		class: class_shop_button,	id:'butSaveStl',	text: icon_save + " .stl",	title:'Download in STL Format'}).on("click", save_stl))
+        .prepend(jQuery("<a />", 	{ css: style_shop_button, 		class: class_shop_button,	id:'butSaveObj',	text: icon_save + " .obj",	title:'Download in OBJ Format'}).on("click", save_obj));
+	
+	// To Work on
+	//var area_editor_tabs = jQuery("." + class_editor_tabs + ">ul");
+	//area_editor_tabs
+	//	.append(jQuery("<li />", 	{ class:'tab tab-20 tab-Download', title:'Download'}));
+		
+		
+	//var area_download_tab = jQuery(".tab-Download");
+	//area_download_tab
+	//	.append(jQuery("<img />", 	{ class: 'menuThumb', src: "/static/svg/material.svg", alt:"Download"}))
+	//	.append("<span>Download</span>");
+		
+    jQuery("." + class_nav + ":first").append([
+        jQuery(html_import).on("click", load_json),
+		jQuery(html_export).on("click", save_json),
+        jQuery().on("change", load_json)
     ]);
 });

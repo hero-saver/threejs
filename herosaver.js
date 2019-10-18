@@ -73,7 +73,7 @@ function init() {
                                 }
                             }
 
-                            if ( geometry instanceof THREE.Geometry) {
+                            if ( geometry instanceof RK.Geometry) {
 
                                 var vertices = geometry.vertices;
                                 var faces = geometry.faces;

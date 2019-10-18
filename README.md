@@ -18,9 +18,9 @@ var xhr=new XMLHttpRequest;xhr.open("get","https://raw.githubusercontent.com/Tea
 This method should automatically load the script on page load. Current it doesn't work if the page is reloaded (Open for suggestions?)
 
 1. Install Greasemonkey Browser Addon (or alternative)
-2. Click the icon and select 'New User Script' from the dropdown menu
-3. Copy and pase from [Autoloader.js](Autoloader.js), editing the intended website
-4. Save
+2. [Click here to install](https://raw.githubusercontent.com/TeaWithLucas/Herosaver/master/herosaver-autoloader.user.js "Click to install") - [herosaver-autoloader.user.js](herosaver-autoloader.user.js)
+3. The install window should pop up, check "Open editor after install completes" if you want to add domains, then click install.
+4. If it doesn't pop up an install window, either Greasemonkey isn't installed or another problem has occured, you can try adding the script manually.
 
 ## Buttons
 * STL - Exports the current model and downloads a STL of it.
@@ -29,23 +29,40 @@ This method should automatically load the script on page load. Current it doesn'
 * Save - Exports the current model settings in a JSON format.
 * Load - Imports a previously exported JSON file with model settings.
 
+## Limitations
+
+* This is a collaborative effort by people of the community, so the output is not perfect. 
+* If you want higher quality exports, consider purchasing the stl files or help work on the code :)
+* The outputted file is not a solid object, but a set of objects which is fine for some uses, but can be problimatic if you want to print the 3D object. You will probabily need to combine these into a solid ojbect, Consider using [Meshmixer](http://www.meshmixer.com/download.html "Meshmixer Download Link") (or equvilient) to produce a printable output, some guides below.
+
+## 3D Printing Guides
+
+For some guides look at:
+* [Youtube - Master Miniatures with Meshmixer Supports](https://www.youtube.com/watch?v=8xY2gHLg-ZA "Youtube - Master Miniatures with Meshmixer Supports")
+* [Youtube - How to create custom supports in Meshmixer](https://www.youtube.com/watch?v=OXFKVmMwXCQ "Youtube - How to create custom supports in Meshmixer")
+* [Reddit - Cheatsheet on Printing and Painting Miniatures](https://www.reddit.com/r/PrintedMinis/comments/8c0uvr/cheatsheet_on_printing_and_painting_miniatures/ "Cheatsheet on Printing and Painting Miniatures")
+* [Reddit - A detailed guide to printing your minis](https://www.reddit.com/r/PrintedMinis/comments/8c0uvr/cheatsheet_on_printing_and_painting_miniatures/ "A detailed guide to printing your minis")
+
+
 ## Bugs
 
 Current bugs, open to solutions/suggestions
-
-* ~~Reset Scale Button doesnt work first press, need a second refresh to work.~~
-* ~~Autoloader.js doesnt work when page is reloaded, only on first page load.~~
-* ~~Some Geometry like facial experessions are not implemented, need to work on the THREE.js section.~~
 * Shaders are not included, causing a more _'blocky'_ output, work on the THREE.js section is needed for this.
 
 ## Future work
 
 Current things to work on, open to solutions/suggestions
+* Empty?
 
-* ~~Rotation is off by 90 degrees, simple fix~~
-* ~~The buttons for enlarge and reset scale are a quick and ugly method, needs reworking to not affect the scale in brower if possible, if not, automatically change scale when downloading and resetting scale when downloaded. My lack of THREE.js experience means I am unsure how to do the latter.~~
+## Done
 
+### Finished work
 
-## Limitations
+* Rotation is off by 90 degrees, simple fix
+* The buttons for enlarge and reset scale are a quick and ugly method, needs reworking to not affect the scale in brower if possible, if not, automatically change scale when downloading and resetting scale when downloaded. My lack of THREE.js experience means I am unsure how to do the latter.
 
-Currently this is a compiled selection of various bits of code, so the output is not 100% great. If you want higher quality exports, consider purchasing the stl files or help work on the code :)
+### Fixed bugs
+
+* Reset Scale Button doesnt work first press, need a second refresh to work.
+* Autoloader.js doesnt work when page is reloaded, only on first page load.
+* Some Geometry like facial experessions are not implemented, need to work on the THREE.js section.

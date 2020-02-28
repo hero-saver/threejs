@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name            Herosaver Autoloader
-// @author          TeaWithLucas
-// @namespace       https://github.com/TeaWithLucas/Herosaver/
+// @author          hero-saver
+// @namespace       https://github.com/hero-saver/threejs/
 // @description     Autoloader for the Herosaver Script
 // @version	        1
 // @include         *example.com/*
 // @include         *forge.com/*
-// @installURL      https://raw.githubusercontent.com/TeaWithLucas/Herosaver/master/herosaver-autoloader.user.js
-// @downloadURL     https://raw.githubusercontent.com/TeaWithLucas/Herosaver/master/herosaver-autoloader.user.js
-// @updateURL       https://raw.githubusercontent.com/TeaWithLucas/Herosaver/master/herosaver-autoloader.user.js
+// @installURL      https://raw.githubusercontent.com/hero-saver/threejs/master/herosaver-autoloader.user.js
+// @downloadURL     https://raw.githubusercontent.com/hero-saver/threejs/master/herosaver-autoloader.user.js
+// @updateURL       https://raw.githubusercontent.com/hero-saver/threejs/master/herosaver-autoloader.user.js
 // @run-at          document-end
 // ==/UserScript==
  

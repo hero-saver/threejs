@@ -11,14 +11,14 @@ Please **Always** think about the **developers** of such websites and try to **s
   3. Paste the following
 
 ```
-var xhr=new XMLHttpRequest;xhr.open("get","https://raw.githubusercontent.com/TeaWithLucas/Herosaver/master/dist/saver.min.js",true);xhr.onreadystatechange=function(){if(xhr.readyState==4){var script=document.createElement("script");script.type="text/javascript";script.text=xhr.responseText;document.body.appendChild(script)}};xhr.send(null);
+var xhr=new XMLHttpRequest;xhr.open("get","https://raw.githubusercontent.com/hero-saver/threejs/master/dist/saver.min.js",true);xhr.onreadystatechange=function(){if(xhr.readyState==4){var script=document.createElement("script");script.type="text/javascript";script.text=xhr.responseText;document.body.appendChild(script)}};xhr.send(null);
 ```
 
 ### Loading via Greecemonkey or other script loader
 This method should automatically load the script on page load. 
 
 1. Install Greasemonkey Browser Addon (or alternative)
-2. [Click here to install](https://raw.githubusercontent.com/TeaWithLucas/Herosaver/master/herosaver-autoloader.user.js "Click to install"), Link to repository: [herosaver-autoloader.user.js](herosaver-autoloader.user.js)
+2. [Click here to install](https://raw.githubusercontent.com/hero-saver/threejs/master/herosaver-autoloader.user.js "Click to install"), Link to repository: [herosaver-autoloader.user.js](herosaver-autoloader.user.js)
 3. The install window should pop up, check "Open editor after install completes" if you want to add domains, then click install.
 4. If it doesn't pop up an install window, either Greasemonkey isn't installed or another problem has occured, you can try adding the script manually.
 

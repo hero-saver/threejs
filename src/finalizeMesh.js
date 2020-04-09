@@ -38,9 +38,6 @@ finalizeMesh.prototype = {
                         newGeometry.attributes.position.setXYZ(i, vertex.x, vertex.y, vertex.z);
                     } else {
                         var finalVector = new Vector4();
-						
-						//commenting out the morph part untill someone manage to fix it
-						
                         /*if (geometry.morphTargetInfluences !== undefined) {
 
                             var morphVector = new Vector4(vertex.x, vertex.y, vertex.z);
@@ -90,12 +87,10 @@ finalizeMesh.prototype = {
                             skinMatrices[3] = mesh.skeleton.bones[skinIndex[3]].matrixWorld;
 
                             for (var k = 0; k < 4; k++) {
-                                // commenting out the morph part as above
-								
-								/*if (geometry.morphTargetInfluences !== undefined) {
+                                /*if (geometry.morphTargetInfluences !== undefined) {
                                     var tempVector = new Vector4(morphVector.x, morphVector.y, morphVector.z);
                                 } else {*/
-                                    var tempVector = new Vector4(vertex.x, vertex.y, vertex.z);
+                                var tempVector = new Vector4(vertex.x, vertex.y, vertex.z);
                                 //}
 
                                 tempVector.multiplyScalar(skinWeight[k]);

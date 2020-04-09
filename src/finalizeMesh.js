@@ -38,7 +38,10 @@ finalizeMesh.prototype = {
                         newGeometry.attributes.position.setXYZ(i, vertex.x, vertex.y, vertex.z);
                     } else {
                         var finalVector = new Vector4();
-                        if (geometry.morphTargetInfluences !== undefined) {
+						
+						//commenting out the morph part untill someone manage to fix it
+						
+                        /*if (geometry.morphTargetInfluences !== undefined) {
 
                             var morphVector = new Vector4(vertex.x, vertex.y, vertex.z);
                             var tempMorph = new Vector4();
@@ -55,7 +58,7 @@ finalizeMesh.prototype = {
                                 tempMorph.addScaledVector(morph.sub(morphVector), geometry.morphTargetInfluences[mt]);
                             }
                             morphVector.add(tempMorph);
-                        }
+                        }*/
 
                         for (var si = 0; si < geometry.skinIndexNames.length; si++) {
 
@@ -87,11 +90,13 @@ finalizeMesh.prototype = {
                             skinMatrices[3] = mesh.skeleton.bones[skinIndex[3]].matrixWorld;
 
                             for (var k = 0; k < 4; k++) {
-                                if (geometry.morphTargetInfluences !== undefined) {
+                                // commenting out the morph part as above
+								
+								/*if (geometry.morphTargetInfluences !== undefined) {
                                     var tempVector = new Vector4(morphVector.x, morphVector.y, morphVector.z);
-                                } else {
+                                } else {*/
                                     var tempVector = new Vector4(vertex.x, vertex.y, vertex.z);
-                                }
+                                //}
 
                                 tempVector.multiplyScalar(skinWeight[k]);
                                 //the inverse takes the vector into local bone space

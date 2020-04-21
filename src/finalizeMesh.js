@@ -38,9 +38,9 @@ finalizeMesh.prototype = {
                         newGeometry.attributes.position.setXYZ(i, vertex.x, vertex.y, vertex.z);
                     } else {
                         var finalVector = new Vector4();
+						var morphVector = new Vector4(vertex.x, vertex.y, vertex.z);//Lilly
                         if (geometry.morphTargetInfluences !== undefined) {
 
-                            var morphVector = new Vector4(vertex.x, vertex.y, vertex.z);
                             var tempMorph = new Vector4();
 
                             for (var mt = 0; mt < geometry.morphAttributes.position.length; mt++) {
@@ -52,8 +52,9 @@ finalizeMesh.prototype = {
                                     geometry.morphAttributes.position[mt].getY(i),
                                     geometry.morphAttributes.position[mt].getZ(i));
 
-                                tempMorph.addScaledVector(morph.sub(morphVector), geometry.morphTargetInfluences[mt]);
+                                tempMorph.addScaledVector(morph, geometry.morphTargetInfluences[mt]);
                             }
+							//comment to avoid morph problems
                             morphVector.add(tempMorph);
                         }
 
@@ -90,7 +91,7 @@ finalizeMesh.prototype = {
                                 if (geometry.morphTargetInfluences !== undefined) {
                                     var tempVector = new Vector4(morphVector.x, morphVector.y, morphVector.z);
                                 } else {
-                                    var tempVector = new Vector4(vertex.x, vertex.y, vertex.z);
+									var tempVector = new Vector4(vertex.x, vertex.y, vertex.z);
                                 }
 
                                 tempVector.multiplyScalar(skinWeight[k]);
